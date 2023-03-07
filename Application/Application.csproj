@@ -7,11 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="FluentValidation\**" />
     <Compile Remove="Services\**" />
-    <EmbeddedResource Remove="FluentValidation\**" />
     <EmbeddedResource Remove="Services\**" />
-    <None Remove="FluentValidation\**" />
     <None Remove="Services\**" />
   </ItemGroup>
 
@@ -21,6 +18,10 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="FluentValidation\" />
   </ItemGroup>
 
 </Project>
