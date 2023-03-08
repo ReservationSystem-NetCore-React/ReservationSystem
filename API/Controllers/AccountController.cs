@@ -2,6 +2,8 @@
 using Application.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
+using System.Net;
 
 namespace API.Controllers
 {
@@ -14,7 +16,7 @@ namespace API.Controllers
         {
             _accountService = accountService;
         }
-
+        
         [HttpPost("authenticate")]
         public async Task<IActionResult> AuthenticateAsync(AuthenticationRequest request)
         {

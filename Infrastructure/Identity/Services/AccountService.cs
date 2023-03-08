@@ -116,7 +116,7 @@ namespace Infrastructure.Identity.Services
             {
                 new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim(JwtRegisteredClaimNames.Email, user.Email),
+                new Claim(JwtRegisteredClaimNames.Email, user.Email),                
                 new Claim("uid", user.Id),
                 new Claim("ip", ipAddress)
             }
@@ -130,7 +130,7 @@ namespace Infrastructure.Identity.Services
                 issuer: _jwtSettings.Issuer,
                 audience: _jwtSettings.Audience,
                 claims: claims,
-                expires: DateTime.UtcNow.AddMinutes(_jwtSettings.DurationInMinutes),
+                expires: DateTime.Now.AddMinutes(_jwtSettings.DurationInMinutes),
                 signingCredentials: signingCredentials);
             return jwtSecurityToken;
         }
@@ -149,10 +149,11 @@ namespace Infrastructure.Identity.Services
             return new RefreshToken
             {
                 Token = RandomTokenString(),
-                Expires = DateTime.UtcNow.AddDays(7),
+                Expires = DateTime.UtcNow.AddDays(2),
                 Created = DateTime.UtcNow,
                 CreatedByIp = ipAddress
             };
         }
+
     }
 }
