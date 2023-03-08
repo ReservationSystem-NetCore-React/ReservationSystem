@@ -5,6 +5,9 @@ name: Build and deploy ASP.Net Core app to Azure Web App - wmszz
 
 on:
   push:
+    branches:
+      - AccountService
+  workflow_dispatch:
 
 jobs:
   build:
@@ -50,5 +53,5 @@ jobs:
         with:
           app-name: 'wmszz'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_04C45F947E4443DAA82C2E24A14F2C55 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_ADE3C3005E3445E4953ACDE505195F08 }}
           package: .
