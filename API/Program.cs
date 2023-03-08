@@ -21,7 +21,7 @@ namespace API
             });
 
             builder.Services.AddApplication();
-            builder.Services.AddInfrastructure(builder.Configuration);
+            builder.Services.AddInfrastructure();
             builder.Services.AddPersistence();
 
 
