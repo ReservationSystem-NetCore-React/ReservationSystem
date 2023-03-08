@@ -2,8 +2,11 @@
 using Application;
 using Infrastructure;
 using Infrastructure.Identity.Contexts;
+using Infrastructure.Identity.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
 using Persistence;
 
 namespace API
@@ -12,7 +15,7 @@ namespace API
     {
         public static void Main(string[] args)
         {
-            var builder = WebApplication.CreateBuilder(args);
+            var builder = WebApplication.CreateBuilder(args); 
 
             builder.Services.AddDbContext<IdentityContext>(options =>
             {
@@ -41,7 +44,6 @@ namespace API
             });
 
             var app = builder.Build();
-
 
 
             // Configure the HTTP request pipeline.
