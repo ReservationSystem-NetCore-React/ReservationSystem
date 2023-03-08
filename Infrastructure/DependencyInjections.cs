@@ -1,6 +1,8 @@
-﻿using Application.Interfaces;
+﻿using Application.DTOs.Account;
+using Application.Interfaces;
 using Application.Wrappers;
 using Domain.Settings;
+using FluentValidation;
 using Infrastructure.Identity.Contexts;
 using Infrastructure.Identity.Models;
 using Infrastructure.Identity.Services;
@@ -15,6 +17,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -24,7 +27,7 @@ namespace Infrastructure
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<IdentityContext>().AddDefaultTokenProviders();
+            services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<IdentityContext>().AddDefaultTokenProviders();
             #region Services
             services.AddTransient<IAccountService, AccountService>();
             #endregion

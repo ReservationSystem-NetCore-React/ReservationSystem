@@ -1,5 +1,6 @@
 ﻿using Application.DTOs.Account;
 using Application.Interfaces;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
@@ -25,7 +26,7 @@ namespace API.Controllers
 
         [HttpPost("register")]
         public async Task<IActionResult> RegisterAsync(RegisterRequest request)
-        {
+        {            
             var origin = Request.Headers["origin"];
             return Ok(await _accountService.RegisterAsync(request, origin));
         }

@@ -1,4 +1,5 @@
 ﻿using Application.DTOs.Account;
+using FluentValidation;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
@@ -17,5 +18,5 @@ namespace Infrastructure.Identity.Models
         {
             return this.RefreshTokens?.Find(x => x.Token == token) != null;
         }
-    }
+    }   
 }

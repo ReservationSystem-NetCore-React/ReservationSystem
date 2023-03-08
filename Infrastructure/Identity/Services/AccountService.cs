@@ -22,13 +22,13 @@ namespace Infrastructure.Identity.Services
 {
     public class AccountService: IAccountService
     {
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly JWTSettings _jwtSettings;
 
 
-        public AccountService(UserManager<IdentityUser> userManager,RoleManager<IdentityRole> roleManager, SignInManager<IdentityUser> signInManager, IOptions<JWTSettings> jwtSettings)
+        public AccountService(UserManager<ApplicationUser> userManager,RoleManager<IdentityRole> roleManager, SignInManager<ApplicationUser> signInManager, IOptions<JWTSettings> jwtSettings)
         {
             _userManager = userManager;
             _roleManager = roleManager;         
@@ -74,7 +74,7 @@ namespace Infrastructure.Identity.Services
                 Email = request.Email,
                 FirstName = request.FirstName,
                 LastName = request.LastName,
-                UserName = request.UserName,
+                UserName = request.UserName,                
                 EmailConfirmed = true,
                 PhoneNumberConfirmed = true
             };
@@ -98,7 +98,7 @@ namespace Infrastructure.Identity.Services
             }
         }
 
-        private async Task<JwtSecurityToken> GenerateJWToken(IdentityUser user)
+        private async Task<JwtSecurityToken> GenerateJWToken(ApplicationUser user)
         {
             var userClaims = await _userManager.GetClaimsAsync(user);
             var roles = await _userManager.GetRolesAsync(user);
