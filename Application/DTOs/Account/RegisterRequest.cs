@@ -30,7 +30,7 @@ namespace Application.DTOs.Account
             RuleFor(x => x.Email).NotNull().EmailAddress();
             RuleFor(x => x.UserName).NotNull().MinimumLength(6);
             RuleFor(x => x.Password).NotNull().MinimumLength(6);
-            RuleFor(x => x.ConfirmPasswordConfig).NotNull().Custom(x=>x.ConfirmPasswordConfig==x.Password);
+            //Add ConfirmPassword validation
         }
     }
 }
