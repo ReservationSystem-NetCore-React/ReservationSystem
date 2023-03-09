@@ -19,15 +19,15 @@ namespace Infrastructure.Tests.Identity
         }
 
         [Fact]
-        public void Should_have_error_when_FirstName_is_null()
+        public void Should_have_error_when_FirstName_is_Empty()
         {
-            var model = new RegisterRequest { FirstName = null };
+            var model = new RegisterRequest { FirstName = string.Empty };
 
             _validator.TestValidate(model).ShouldHaveValidationErrorFor(x => x.FirstName);
         }
 
         [Fact]
-        public void Should_Not_have_error_when_FirstName_is_null()
+        public void Should_Not_have_error_when_FirstName_have_Value()
         {
             var model = new RegisterRequest { FirstName = "Piotr" };
 
@@ -35,15 +35,15 @@ namespace Infrastructure.Tests.Identity
         }
 
         [Fact]
-        public void Should_have_error_when_LastName_is_null()
+        public void Should_have_error_when_LastName_is_Empty()
         {
-            var model = new RegisterRequest { LastName = null };
+            var model = new RegisterRequest { LastName = string.Empty };
 
             _validator.TestValidate(model).ShouldHaveValidationErrorFor(x => x.LastName);
         }
 
         [Fact]
-        public void Should_Not_have_error_when_LastName_is_null()
+        public void Should_Not_have_error_when_LastName_have_Value()
         {
             var model = new RegisterRequest { LastName = "Kowalski" };
 
@@ -51,15 +51,15 @@ namespace Infrastructure.Tests.Identity
         }
 
         [Fact]
-        public void Should_have_error_when_Email_is_null()
+        public void Should_have_error_when_Email_is_Empty()
         {
-            var model = new RegisterRequest { Email = null };
+            var model = new RegisterRequest { Email = string.Empty };
 
             _validator.TestValidate(model).ShouldHaveValidationErrorFor(x => x.Email);
         }
 
         [Fact]
-        public void Should_Not_have_error_when_Email_is()
+        public void Should_Not_have_error_when_Email_have_Value()
         {
             var model = new RegisterRequest { Email = "kowalski@wp.pl" };
 
@@ -67,32 +67,15 @@ namespace Infrastructure.Tests.Identity
         }
 
         [Fact]
-        public void Should_Not_have_error_when_Password_Compare_ConfirmPassword()
+        public void Should_have_error_when_UserName_is_Empty()
         {
-            var model = new RegisterRequest { Password = "Test123", ConfirmPassword = "Test123" };
-
-            _validator.TestValidate(model).ShouldNotHaveValidationErrorFor(x => x.Password);
-        }
-
-        [Fact]
-        public void Should_have_error_when_Password_Compare_Not_ConfirmPassword()
-        {
-            var model = new RegisterRequest { Password = "Test123", ConfirmPassword = "Tes" };
-
-            _validator.TestValidate(model).ShouldHaveValidationErrorFor(x => x.Password);
-        }
-
-
-        [Fact]
-        public void Should_have_error_when_UserName_is_null()
-        {
-            var model = new RegisterRequest { UserName=null };
+            var model = new RegisterRequest { UserName = string.Empty };
 
             _validator.TestValidate(model).ShouldHaveValidationErrorFor(x => x.UserName);
         }
 
         [Fact]
-        public void Should_have_error_when_UserName_Leng_is()
+        public void Should_have_error_when_UserName_Leng_is_Short()
         {
             var model = new RegisterRequest { UserName = "1234" };
 
@@ -100,20 +83,43 @@ namespace Infrastructure.Tests.Identity
         }
 
         [Fact]
-        public void Should_have_error_when_Password_is_null()
+        public void Should_Not_have_error_when_UserName_Leng_is_More_then_5()
         {
-            var model = new RegisterRequest { Password = null };
+            var model = new RegisterRequest { UserName = "123456" };
+
+            _validator.TestValidate(model).ShouldNotHaveValidationErrorFor(x => x.UserName);
+        }
+
+        [Fact]
+        public void Should_have_error_when_Password_is_Empty()
+        {
+            var model = new RegisterRequest { Password = string.Empty };
 
             _validator.TestValidate(model).ShouldHaveValidationErrorFor(x => x.Password);
         }
 
         [Fact]
-        public void Should_Not_have_error_when_UserName_is()
+        public void Should_have_error_when_Password_Leng_is_Short()
         {
-            var model = new RegisterRequest { UserName = "Piotr1" };
+            var model = new RegisterRequest { Password = "7t!A", ConfirmPassword = "7t!A" };
 
-            _validator.TestValidate(model).ShouldNotHaveValidationErrorFor(x => x.UserName);
+            _validator.TestValidate(model).ShouldHaveValidationErrorFor(x => x.Password);
         }
 
+        [Fact]
+        public void Should_Not_have_error_when_Password_Leng_is_More_then_5()
+        {
+            var model = new RegisterRequest { Password = "7t!Azv", ConfirmPassword = "7t!Azv" };
+
+            _validator.TestValidate(model).ShouldNotHaveValidationErrorFor(x => x.Password);
+        }
+
+        [Fact]
+        public void Should_have_error_when_Password_Not_Compare_ConfirmPassword()
+        {
+            var model = new RegisterRequest { Password = "7t!Azv", ConfirmPassword = "7t!Az" };
+
+            _validator.TestValidate(model).ShouldHaveValidationErrorFor(x => x.ConfirmPassword);
+        }
     }
 }

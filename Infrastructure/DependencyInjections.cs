@@ -3,10 +3,13 @@ using Application.Interfaces;
 using Application.Wrappers;
 using Domain.Settings;
 using FluentValidation;
+using Infrastructure.Identity;
 using Infrastructure.Identity.Contexts;
 using Infrastructure.Identity.Models;
+using Infrastructure.Identity.Seeds;
 using Infrastructure.Identity.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
@@ -27,6 +30,7 @@ namespace Infrastructure
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
+            
             services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<IdentityContext>().AddDefaultTokenProviders();
             #region Services
             services.AddTransient<IAccountService, AccountService>();

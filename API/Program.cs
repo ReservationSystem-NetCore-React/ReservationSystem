@@ -2,9 +2,11 @@
 using API.Extensions;
 using API.Middlewares;
 using Application;
+using Domain.Exceptions;
 using Infrastructure;
 using Infrastructure.Identity.Contexts;
 using Infrastructure.Identity.Models;
+using Infrastructure.Identity.Seeds;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -29,7 +31,7 @@ namespace API
             builder.Services.AddInfrastructure(builder.Configuration);
             builder.Services.AddPersistence();
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerExtension();      
+            builder.Services.AddSwaggerExtension();
 
             builder.Services.AddControllers();    
 

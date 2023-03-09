@@ -26,7 +26,7 @@ namespace API.Controllers
 
         [HttpPost("register")]
         public async Task<IActionResult> RegisterAsync(RegisterRequest request)
-        {            
+        {
             var origin = Request.Headers["origin"];
             return Ok(await _accountService.RegisterAsync(request, origin));
         }

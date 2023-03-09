@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FluentValidation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,5 +11,14 @@ namespace Application.DTOs.Account
     {
         public string Email { get; set; }
         public string Password { get; set; }
+    }
+
+    public class AuthenticationRequestValidator : AbstractValidator<AuthenticationRequest>
+    {
+        public AuthenticationRequestValidator()
+        {            
+            RuleFor(x => x.Email).NotEmpty().EmailAddress();            
+            RuleFor(x => x.Password).NotEmpty();          
+        }
     }
 }

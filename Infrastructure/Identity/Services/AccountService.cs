@@ -17,6 +17,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
 using Infrastructure.Identity.Helpers;
+using System.ComponentModel.DataAnnotations;
 
 namespace Infrastructure.Identity.Services
 {
@@ -47,7 +48,8 @@ namespace Infrastructure.Identity.Services
             if (!result.Succeeded)
             {
                 throw new ApiException($"Invalid Credentials for '{request.Email}'.");
-            }           
+            }     
+            
             JwtSecurityToken jwtSecurityToken = await GenerateJWToken(user);
             AuthenticationResponse response = new AuthenticationResponse();
             response.Id = user.Id;
@@ -63,12 +65,13 @@ namespace Infrastructure.Identity.Services
         }
 
         public async Task<Response<string>> RegisterAsync(RegisterRequest request, string origin)
-        {
+        {            
             var userWithSameUserName = await _userManager.FindByNameAsync(request.UserName);
             if (userWithSameUserName != null)
             {
                 throw new ApiException($"Username '{request.UserName}' is already taken.");
             }
+           
             var user = new ApplicationUser
             {
                 Email = request.Email,
