@@ -23,6 +23,7 @@ You are currently unable to run the project.
     Constants
 
 #####Application
+
     Abstractions/Contracts/Interfaces
     Application Services/Handlers
     Commands and Queries
@@ -32,7 +33,9 @@ You are currently unable to run the project.
     Validators
     Behaviors
     Specifications
+
 #####Infrastructure
+
     Identity Services
     File Storage Services
     Queue Storage Services

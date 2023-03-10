@@ -68,6 +68,10 @@
     <Build Include="dbo\Table\Users.sql" />
     <Build Include="dbo\Table\UserRoles.sql" />
     <Build Include="dbo\Table\Roles.sql" />
+    <Build Include="dbo\StoredProcedures\spReservation_GetAll.sql" />
+    <Build Include="dbo\StoredProcedures\spReservation_Insert.sql" />
+    <Build Include="dbo\StoredProcedures\spReservation_Update.sql" />
+    <Build Include="dbo\StoredProcedures\spReservation_Delete.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Script.PostDeployment.sql" />

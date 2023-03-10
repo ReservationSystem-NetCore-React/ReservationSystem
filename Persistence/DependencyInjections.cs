@@ -1,10 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Extensions.DependencyInjection;
 
 namespace Persistence
 {
@@ -12,7 +6,8 @@ namespace Persistence
     {
         public static IServiceCollection AddPersistence(this IServiceCollection services)
         {
-            
+            services.AddSingleton<ISQLDataAccess, SQLDataAccess>();
+            services.AddScoped<IReservationRepository, ReservationRepository>();
             return services;
         }
     }
