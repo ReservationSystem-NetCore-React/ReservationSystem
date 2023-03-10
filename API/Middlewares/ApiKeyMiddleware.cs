@@ -18,7 +18,7 @@ namespace API.Middlewares
             if (!context.Request.Headers.TryGetValue(_apiKey, out var extractedApiKey))
             {
                 context.Response.StatusCode = 401;
-                await context.Response.WriteAsync("No API key was provided.");
+                await context.Response.WriteAsync("Brak klucza API.");
                 return;
             }
 
@@ -29,7 +29,7 @@ namespace API.Middlewares
             if (!apiKey.Equals(extractedApiKey))
             {
                 context.Response.StatusCode = 401;
-                await context.Response.WriteAsync("Invalid API key.");
+                await context.Response.WriteAsync("Błędny klucz API.");
                 return;
             }
         }
