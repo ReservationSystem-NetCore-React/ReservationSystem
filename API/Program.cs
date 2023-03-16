@@ -1,9 +1,7 @@
-
 using Application;
 using Infrastructure;
 using Infrastructure.Identity.Contexts;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Persistence;
 
 namespace API
@@ -17,14 +15,12 @@ namespace API
             builder.Services.AddDbContext<IdentityContext>(options =>
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-
             });
 
             builder.Services.AddApplication();
             builder.Services.AddInfrastructure();
             builder.Services.AddPersistence();
-
-
+            
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
@@ -35,21 +31,16 @@ namespace API
             {
                 opt.AddPolicy("CorsPolicy", policy =>
                 {
-                    //todo change for production.
+                    //todo change for production. In next build
                     policy.AllowAnyMethod().AllowAnyHeader().WithOrigins("*");
                 });
             });
 
             var app = builder.Build();
 
-
-
             // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
-            {
                 app.UseSwagger();
                 app.UseSwaggerUI();
-            }
 
             app.UseHttpsRedirection();
 

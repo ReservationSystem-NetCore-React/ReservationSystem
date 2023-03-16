@@ -6,7 +6,6 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{B2174FBC-0759-4E93-B2C5-73B555295F7D}"
 	ProjectSection(SolutionItems) = preProject
 		Readme.md = Readme.md
-		RSDapper.publish.xml = RSDapper.publish.xml
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API", "API\API.csproj", "{5FDB4FB5-07AE-456B-AE2C-E487E25AB595}"

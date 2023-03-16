@@ -38,3 +38,5 @@ RSDapper/bin/
 RSDapper/RSDapper.dbmdl
 RSDapper/RSDapper.jfm
 RSDapper/RSDapper.sqlproj.user
+API/API.csproj.user
+RSDapper.publish.xml
