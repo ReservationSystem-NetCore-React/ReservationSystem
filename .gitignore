@@ -33,3 +33,10 @@ Tests/Persistence.Tests/obj/
 Tests/Domain.Tests/obj/
 Tests/Application.Tests/obj/
 Tests/API.Tests/obj/
+RSDapper/obj/
+RSDapper/bin/
+RSDapper/RSDapper.dbmdl
+RSDapper/RSDapper.jfm
+RSDapper/RSDapper.sqlproj.user
+API/API.csproj.user
+RSDapper.publish.xml
